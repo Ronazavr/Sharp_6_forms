@@ -1,76 +1,60 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace lab6._2
 {
     class MatrMake
     {
-        int n_str,     //количество строк 
-            n_col;     //количество столбцов 
-        int[,] matrix; // обрабатываемая матрица
+        private int n_str, n_col; // Количество строк и столбцов
+        private int[,] matrix;    // Матрица
+
         public MatrMake(int str_n, int col_n)
         {
             n_str = str_n;
             n_col = col_n;
             matrix = new int[str_n, col_n];
         }
-        //матрица из DataGridView 
+
+        // Заполнение матрицы из DataGridView
         public void GridToMatrix(DataGridView dgv)
         {
-            DataGridViewCell txtCell;
             for (int i = 0; i < n_str; i++)
             {
                 for (int j = 0; j < n_col; j++)
                 {
-                    txtCell = dgv.Rows[i].Cells[j];
-                    string s = txtCell.Value.ToString();
-                    if (s == "")
-                        matrix[i, j] = 0;
-                    else
-                        matrix[i, j] = Int32.Parse(s);
+                    matrix[i, j] = int.Parse(dgv.Rows[i].Cells[j].Value.ToString());
                 }
             }
         }
-        //вывод матрицы в DataGridView 
+
+        // Вывод матрицы в DataGridView
         public void MatrixToGrid(DataGridView dgv)
         {
-            //установка размеров 
-            int i;
             DataTable matr = new DataTable("matr");
-            DataColumn[] cols = new DataColumn[n_col];
-            for (i = 0; i < n_col; i++)
+            for (int i = 0; i < n_col; i++)
             {
-                cols[i] = new DataColumn(i.ToString());
-                matr.Columns.Add(cols[i]);
+                matr.Columns.Add(i.ToString(), typeof(int));
             }
-            for (i = 0; i < n_str; i++)
+            for (int i = 0; i < n_str; i++)
             {
-                DataRow newRow;
-                newRow = matr.NewRow();
+                DataRow newRow = matr.NewRow();
+                for (int j = 0; j < n_col; j++)
+                {
+                    newRow[j] = matrix[i, j];
+                }
                 matr.Rows.Add(newRow);
             }
             dgv.DataSource = matr;
-            for (i = 0; i < n_col; i++)
-                dgv.Columns[i].Width = 50;
-            //занесение значений
-            DataGridViewCell txtCell;
-            for (i = 0; i < n_str; i++)
+            for (int i = 0; i < n_col; i++)
             {
-                for (int j = 0; j < n_col; j++)
-                {
-                    txtCell = dgv.Rows[i].Cells[j];
-                    txtCell.Value = matrix[i, j].ToString();
-                }
+                dgv.Columns[i].Width = 50;
             }
         }
+
+        // Удаление строк с максимальной суммой
         public void RemoveRowsWithMaxSum()
         {
-            // Находим максимальную сумму среди строк
             int maxSum = int.MinValue;
             for (int i = 0; i < n_str; i++)
             {
@@ -85,7 +69,6 @@ namespace lab6._2
                 }
             }
 
-            // Считаем количество строк с максимальной суммой
             int countRowsToRemove = 0;
             for (int i = 0; i < n_str; i++)
             {
@@ -100,14 +83,10 @@ namespace lab6._2
                 }
             }
 
-            // Если есть строки для удаления
             if (countRowsToRemove > 0)
             {
-                // Создаем массив для хранения индексов строк, которые нужно удалить
-                int[] rowsToRemove = new int[countRowsToRemove];
-                int index = 0;
-
-                // Заполняем массив индексами строк для удаления
+                int[,] newMatrix = new int[n_str - countRowsToRemove, n_col];
+                int newRowIndex = 0;
                 for (int i = 0; i < n_str; i++)
                 {
                     int rowSum = 0;
@@ -115,31 +94,7 @@ namespace lab6._2
                     {
                         rowSum += matrix[i, j];
                     }
-                    if (rowSum == maxSum)
-                    {
-                        rowsToRemove[index] = i;
-                        index++;
-                    }
-                }
-
-                // Создаем новую матрицу без удаленных строк
-                int newRowCount = n_str - countRowsToRemove;
-                int[,] newMatrix = new int[newRowCount, n_col];
-
-                int newRowIndex = 0;
-                for (int i = 0; i < n_str; i++)
-                {
-                    bool shouldRemove = false;
-                    for (int k = 0; k < countRowsToRemove; k++)
-                    {
-                        if (i == rowsToRemove[k])
-                        {
-                            shouldRemove = true;
-                            break;
-                        }
-                    }
-
-                    if (!shouldRemove)
+                    if (rowSum != maxSum)
                     {
                         for (int j = 0; j < n_col; j++)
                         {
@@ -148,11 +103,21 @@ namespace lab6._2
                         newRowIndex++;
                     }
                 }
-
-                // Обновляем матрицу и количество строк
                 matrix = newMatrix;
-                n_str = newRowCount;
+                n_str = newRowIndex;
             }
+        }
+
+        // Получение количества строк
+        public int GetStr()
+        {
+            return n_str;
+        }
+
+        // Получение количества столбцов
+        public int GetCol()
+        {
+            return n_col;
         }
     }
 }

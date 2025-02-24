@@ -10,7 +10,7 @@ namespace lab6._2
     {
         /// <summary>
         /// Главная точка входа для приложения.
-        /// </summary>
+        /// </summary> 1
         [STAThread]
         static void Main()
         {

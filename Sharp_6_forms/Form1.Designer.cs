@@ -1,17 +1,14 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
-
-namespace lab6._2
+﻿namespace lab6._2
 {
     partial class Form1
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -26,13 +23,12 @@ namespace lab6._2
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.textBoxSize = new System.Windows.Forms.TextBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnLoadMatrix = new System.Windows.Forms.Button();
@@ -44,12 +40,6 @@ namespace lab6._2
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
             this.SuspendLayout();
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // textBoxSize
             // 
@@ -89,7 +79,7 @@ namespace lab6._2
             this.btnTask.Name = "btnTask";
             this.btnTask.Size = new System.Drawing.Size(167, 34);
             this.btnTask.TabIndex = 3;
-            this.btnTask.Text = "Удалить столбцы, с заданным значением";
+            this.btnTask.Text = "Удалить строки с макс. суммой";
             this.btnTask.UseVisualStyleBackColor = true;
             // 
             // btnSaveOriginal
@@ -156,14 +146,14 @@ namespace lab6._2
         }
 
         #endregion
-        private ContextMenuStrip contextMenuStrip1;
-        private TextBox textBoxSize;
-        private Button btnCreate;
-        private Button btnLoadMatrix;
-        private Button btnTask;
-        private Button btnSaveOriginal;
-        private Button btnSaveResult;
-        private DataGridView dataGridViewInput;
-        private DataGridView dataGridViewResult;
+
+        private System.Windows.Forms.TextBox textBoxSize;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnLoadMatrix;
+        private System.Windows.Forms.Button btnTask;
+        private System.Windows.Forms.Button btnSaveOriginal;
+        private System.Windows.Forms.Button btnSaveResult;
+        private System.Windows.Forms.DataGridView dataGridViewInput;
+        private System.Windows.Forms.DataGridView dataGridViewResult;
     }
 }
