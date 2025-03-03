@@ -1,0 +1,10 @@
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\obj\Debug\Sharp_6_forms.csproj.AssemblyReference.cache
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\obj\Debug\lab6._2.Form1.resources
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\obj\Debug\Sharp_6_forms.Properties.Resources.resources
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\obj\Debug\Sharp_6_forms.csproj.GenerateResource.cache
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\obj\Debug\Sharp_6_forms.csproj.CoreCompileInputs.cache
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\bin\Debug\Sharp_6_forms.exe.config
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\bin\Debug\Sharp_6_forms.exe
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\bin\Debug\Sharp_6_forms.pdb
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\obj\Debug\Sharp_6_forms.exe
+C:\Users\TK\source\repos\Sharp_6_forms\Sharp_6_forms\obj\Debug\Sharp_6_forms.pdb
